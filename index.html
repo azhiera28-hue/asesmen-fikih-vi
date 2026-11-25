@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Asesmen Sumatif Akhir Semester</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+
+<!-- ========== Layar masuk ========== -->
+<div id="screenGate" class="gate">
+  <header class="masthead">
+    <div class="wrap">
+      <div class="school" id="gSchool">&nbsp;</div>
+      <h1 class="title-serif" id="gTitle">Asesmen Sumatif Akhir Semester</h1>
+      <div class="meta" id="gMeta"></div>
+    </div>
+  </header>
+  <main>
+    <section class="card" aria-labelledby="hMasuk">
+      <h2 id="hMasuk">Masuk ke ujian</h2>
+      <div id="gAlert"></div>
+      <form id="formMasuk" autocomplete="off" novalidate>
+        <label class="field" id="fNama"><span>Nama lengkap</span><input type="text" id="inNama" maxlength="60" required></label>
+        <div class="fgrid" style="grid-template-columns:1fr 1fr;gap:0 .8rem">
+          <label class="field"><span id="lblNisn">Nomor absen / NISN</span><input type="text" id="inNisn" maxlength="20" inputmode="text" required></label>
+          <label class="field" id="fKelas"><span>Kelas / rombel</span><input type="text" id="inKelas" maxlength="20" placeholder="contoh: VI-A"></label>
+        </div>
+        <label class="field hidden" id="fPin"><span>PIN</span><input type="password" id="inPin" maxlength="20"><small>Isi jika guru memberikan PIN.</small></label>
+        <label class="field hidden" id="fToken"><span>Token ujian</span><input type="text" id="inToken" maxlength="20" style="text-transform:uppercase;letter-spacing:.15em"><small>Token dibacakan atau ditulis di papan oleh guru.</small></label>
+        <label class="check"><input type="checkbox" id="inAgree"><span>Saya sudah membaca tata tertib dan siap mengerjakan dengan jujur.</span></label>
+        <button class="btn primary block" id="btnStart" type="submit" disabled>Mulai ujian (layar penuh)</button>
+      </form>
+      <p class="note" id="gNote"></p>
+    </section>
+
+    <section class="card" aria-labelledby="hTertib">
+      <h2 id="hTertib">Tata tertib</h2>
+      <p id="gCatatan" class="note" style="margin-top:0"></p>
+      <ul class="rules" id="gRules"></ul>
+      <div class="limit" id="gLimit"></div>
+    </section>
+  </main>
+</div>
+
+<!-- ========== Layar ujian ========== -->
+<div id="screenExam" class="exam hidden">
+  <header class="topbar">
+    <div class="who"><b id="xWho">-</b><small id="xSub">-</small></div>
+    <div class="timer" id="xTimer" aria-live="off">--:--</div>
+    <div class="strikes" id="xStrikes" title="Poin pelanggaran"></div>
+  </header>
+  <div class="layout">
+    <section class="card qcard" id="qcard" aria-live="polite"></section>
+    <aside class="card sidebar" id="sidebar">
+      <h3>Daftar soal</h3>
+      <div class="grid" id="qgrid"></div>
+      <div class="legend">
+        <span><i style="background:var(--teal)"></i>sudah dijawab</span>
+        <span><i style="background:var(--saffron)"></i>ditandai ragu-ragu</span>
+      </div>
+      <button class="btn primary block" id="btnFinish">Selesai &amp; kumpulkan</button>
+      <button class="btn block mobile-only" id="btnCloseSide" style="margin-top:.5rem">Tutup daftar</button>
+    </aside>
+  </div>
+  <div class="conn hidden" id="conn">Koneksi terputus. Jawaban disimpan di perangkat dan dikirim ulang otomatis.</div>
+</div>
+
+<!-- ========== Layar selesai ========== -->
+<div id="screenDone" class="done hidden">
+  <div class="card" id="doneCard"></div>
+</div>
+
+<div id="layer"></div>
+
+<script src="config.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/exam.js"></script>
+</body>
+</html>
